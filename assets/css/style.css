@@ -571,7 +571,9 @@ button, a { transition: var(--transition); }
   gap: 20px;
   margin-bottom: 20px;
 }
-.social-link { font-size: 20px; }
+.social-link {
+  font-size: 20px;
+}
 .social-link ion-icon { --ionicon-stroke-width: 40px; }
 .social-link:is(:hover, :focus) { color: var(--carolina-blue); }
 .copyright { font-size: var(--fs-6); }
@@ -718,3 +720,88 @@ button, a { transition: var(--transition); }
   .footer-list:last-of-type { width: 33.33%; }
 
 }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: hsla(0, 0%, 0%, 0.5);
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: var(--white);
+  padding: 25px;
+  border-radius: var(--radius-18);
+  box-shadow: var(--shadow-1);
+  z-index: 11;
+  width: 90%;
+  max-width: 400px;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+}
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  pointer-events: all;
+}
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  color: var(--independence);
+}
+.modal-close-btn:is(:hover, :focus) { color: var(--carolina-blue); }
+.auth-form { display: none; }
+.auth-form.active { display: block; }
+.auth-form .h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.modal-input-wrapper { margin-bottom: 15px; }
+.modal-input-label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--manatee);
+  font-size: var(--fs-6);
+}
+.modal-input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid hsla(0, 0%, 0%, 0.1);
+  border-radius: var(--radius-10);
+  outline: none;
+  transition: var(--transition);
+  font-family: var(--ff-nunito);
+}
+.modal-input-field:focus { border-color: var(--carolina-blue); }
+.auth-form .btn {
+  width: 100%;
+  margin-top: 10px;
+}
+.auth-form .text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: var(--fs-6);
+  color: var(--independence);
+}
+.auth-form .link {
+  display: inline-block;
+  color: var(--carolina-blue);
+  font-weight: var(--fw-600);
+}
+
+/* SCROLLSPY ACTIVE LINK */
+.navbar-link.active { color: var(--carolina-blue); }
