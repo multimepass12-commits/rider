@@ -109,19 +109,79 @@ forms.forEach(form => {
 });
 
 /**
- * SEARCH FILTER FUNCTIONALITY
+ * SEARCH FILTER & AUTOCOMPLETE FUNCTIONALITY
  */
 const searchForm = document.querySelector(".hero-form");
+const searchInput = document.getElementById("input-1");
+const autocompleteList = document.querySelector("[data-autocomplete-list]");
 const carItems = document.querySelectorAll(".featured-car-list > li");
 
+// Collect available car models
+const availableModels = new Set();
+carItems.forEach(item => {
+  const model = item.getAttribute("data-car-model");
+  if (model) availableModels.add(model);
+});
+const availableModelsArray = Array.from(availableModels);
+
+// Autocomplete Logic
+if (searchInput && autocompleteList) {
+  searchInput.addEventListener("input", function() {
+    const val = this.value.toLowerCase();
+    autocompleteList.innerHTML = "";
+    autocompleteList.classList.remove("active");
+
+    if (!val) return;
+
+    const matches = availableModelsArray.filter(model => 
+      model.toLowerCase().includes(val)
+    );
+
+    if (matches.length > 0) {
+      autocompleteList.classList.add("active");
+      matches.forEach(match => {
+        const li = document.createElement("li");
+        li.classList.add("autocomplete-item");
+        li.textContent = match;
+        li.addEventListener("click", () => {
+          searchInput.value = match;
+          autocompleteList.innerHTML = "";
+          autocompleteList.classList.remove("active");
+        });
+        autocompleteList.appendChild(li);
+      });
+    }
+  });
+
+  // Close autocomplete when clicking outside
+  document.addEventListener("click", function(e) {
+    if (!e.target.closest(".input-wrapper")) {
+      autocompleteList.classList.remove("active");
+    }
+  });
+}
+
+// Search Form Submit
 if (searchForm) {
   searchForm.addEventListener("submit", function (e) {
     e.preventDefault();
     
     const formData = new FormData(searchForm);
-    const searchModel = formData.get("car-model").toLowerCase();
+    const searchModel = formData.get("car-model").toLowerCase().trim();
     const searchPrice = parseInt(formData.get("monthly-pay")) || Infinity;
     const searchYear = parseInt(formData.get("year")) || 0;
+
+    // Check if car exists in database (if user typed something)
+    if (searchModel) {
+      const isAvailable = availableModelsArray.some(model => 
+        model.toLowerCase().includes(searchModel)
+      );
+
+      if (!isAvailable) {
+        showToast("The car is not available here please choose any other");
+        return;
+      }
+    }
 
     let foundCount = 0;
 
@@ -131,7 +191,7 @@ if (searchForm) {
       const carYear = parseInt(item.getAttribute("data-year"));
 
       // Filter Logic
-      const matchesModel = carModel.includes(searchModel);
+      const matchesModel = !searchModel || carModel.includes(searchModel);
       const matchesPrice = carPrice <= searchPrice;
       const matchesYear = carYear >= searchYear;
 
