@@ -240,7 +240,10 @@ button, a { transition: var(--transition); }
   border-radius: var(--radius-18);
   font-family: var(--ff-nunito);
 }
-.input-wrapper { padding: 15px 20px; }
+.input-wrapper {
+  padding: 15px 20px;
+  position: relative;
+}
 .input-wrapper:not(:last-of-type) { border-bottom: 1px solid hsla(0, 0%, 0%, 0.08); }
 .input-label {
   color: var(--manatee);
@@ -257,6 +260,37 @@ button, a { transition: var(--transition); }
 }
 .input-field:focus { outline-color: var(--carolina-blue); }
 .input-field::placeholder { color: var(--independence); }
+
+/* Autocomplete Styles */
+.autocomplete-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--white);
+  border: 1px solid hsla(0, 0%, 0%, 0.08);
+  border-top: none;
+  border-radius: 0 0 var(--radius-10) var(--radius-10);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 5;
+  display: none;
+  box-shadow: var(--shadow-1);
+}
+.autocomplete-list.active { display: block; }
+.autocomplete-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: var(--ff-nunito);
+  font-size: var(--fs-6);
+  color: var(--independence);
+  transition: var(--transition);
+}
+.autocomplete-item:hover {
+  background: var(--alice-blue-2);
+  color: var(--carolina-blue);
+}
+
 .hero-form .btn {
   --width: calc(100% - 40px);
   --height: 50px;
@@ -574,7 +608,8 @@ button, a { transition: var(--transition); }
 .social-link {
   font-size: 20px;
 }
-.social-link ion-icon { --ionicon-stroke-width: 40px; }
+.social-link ion-icon { --ionicon-stroke-width: 40px;
+}
 .social-link:is(:hover, :focus) { color: var(--carolina-blue); }
 .copyright { font-size: var(--fs-6); }
 .copyright > a { display: inline-block; }
