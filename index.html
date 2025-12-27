@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -36,7 +36,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="navbar-link" data-nav-link>
+            <a href="#about" class="navbar-link" data-nav-link>
               <ion-icon name="information-circle-outline"></ion-icon>
               <span>About us</span>
             </a>
@@ -391,7 +391,7 @@
           </ul>
         </div>
       </section>
-      <section class="section get-start">
+      <section class="section get-start" id="about">
         <div class="container">
           <h2 class="h2 section-title">Get started with 4 simple steps</h2>
           <ul class="get-start-list">
@@ -701,6 +701,59 @@
       </div>
     </div>
   </footer>
+
+  <!-- LOGIN / SIGNUP MODAL -->
+  <div class="modal-overlay" data-modal-overlay></div>
+  <div class="modal" data-modal>
+    <button class="modal-close-btn" data-modal-close-btn aria-label="Close Modal">
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+
+    <div class="modal-content">
+      <!-- Login Form -->
+      <div class="auth-form active" data-login-form>
+        <h2 class="h2">Login</h2>
+        <form action="#">
+          <div class="modal-input-wrapper">
+            <label for="login-email" class="modal-input-label">Email</label>
+            <input type="email" id="login-email" class="modal-input-field" placeholder="Enter your email" required>
+          </div>
+          <div class="modal-input-wrapper">
+            <label for="login-password" class="modal-input-label">Password</label>
+            <input type="password" id="login-password" class="modal-input-field" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" class="btn">Login</button>
+        </form>
+        <p class="text">
+          Don't have an account? <a href="#" class="link" data-switch-to-signup>Sign up</a>
+        </p>
+      </div>
+
+      <!-- Signup Form -->
+      <div class="auth-form" data-signup-form>
+        <h2 class="h2">Sign Up</h2>
+        <form action="#">
+          <div class="modal-input-wrapper">
+            <label for="signup-name" class="modal-input-label">Name</label>
+            <input type="text" id="signup-name" class="modal-input-field" placeholder="Enter your name" required>
+          </div>
+          <div class="modal-input-wrapper">
+            <label for="signup-email" class="modal-input-label">Email</label>
+            <input type="email" id="signup-email" class="modal-input-field" placeholder="Enter your email" required>
+          </div>
+          <div class="modal-input-wrapper">
+            <label for="signup-password" class="modal-input-label">Password</label>
+            <input type="password" id="signup-password" class="modal-input-field" placeholder="Create a password" required>
+          </div>
+          <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <p class="text">
+          Already have an account? <a href="#" class="link" data-switch-to-login>Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
   <script src="./assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
