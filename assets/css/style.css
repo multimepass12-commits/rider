@@ -590,8 +590,7 @@ button, a { transition: var(--transition); }
 @media (min-width: 580px) {
   .container {
     max-width: 540px;
-    margin-inline: auto;
-  }
+    margin-inline: auto; }
   .header-actions .btn span {
     display: block;
     font-weight: var(--fw-400);
@@ -678,7 +677,6 @@ button, a { transition: var(--transition); }
 
 @media (min-width: 1200px) {
   :root {
-    
     --fs-1: 2.875rem;
     --fs-2: 2rem;
   }
@@ -718,7 +716,6 @@ button, a { transition: var(--transition); }
   .footer-text { max-width: 35ch; }
   .footer-list:not(:last-of-type) { width: 16.66%; }
   .footer-list:last-of-type { width: 33.33%; }
-
 }
 
 /* MODAL */
@@ -805,3 +802,39 @@ button, a { transition: var(--transition); }
 
 /* SCROLLSPY ACTIVE LINK */
 .navbar-link.active { color: var(--carolina-blue); }
+
+/* TOAST NOTIFICATION */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.toast {
+  background: var(--white);
+  color: var(--independence);
+  padding: 15px 20px;
+  border-radius: var(--radius-10);
+  box-shadow: var(--shadow-1);
+  border-left: 4px solid var(--carolina-blue);
+  font-family: var(--ff-nunito);
+  font-size: var(--fs-6);
+  animation: slideIn 0.3s ease forwards;
+  max-width: 300px;
+}
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* ACTIVE FAVORITE */
+.featured-car-card .fav-btn.active {
+  background: var(--red-salsa);
+  color: var(--white);
+}
+.featured-car-card .fav-btn.active:hover {
+  background: var(--deep-cerise);
+}
