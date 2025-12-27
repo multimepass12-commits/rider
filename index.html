@@ -99,14 +99,14 @@
                 <ion-icon name="wallet-outline"></ion-icon>
                 <span>Max. monthly payment</span>
               </label>
-              <input type="text" name="monthly-pay" id="input-2" class="input-field" placeholder="Add an amount in $">
+              <input type="number" name="monthly-pay" id="input-2" class="input-field" placeholder="Add an amount in $">
             </div>
             <div class="input-wrapper">
               <label for="input-3" class="input-label">
                 <ion-icon name="calendar-outline"></ion-icon>
                 <span>Make Year</span>
               </label>
-              <input type="text" name="year" id="input-3" class="input-field" placeholder="Add a minimal make year">
+              <input type="number" name="year" id="input-3" class="input-field" placeholder="Add a minimal make year">
             </div>
             <button type="submit" class="btn">
               <ion-icon name="search-outline"></ion-icon>
@@ -125,7 +125,7 @@
             </a>
           </div>
           <ul class="featured-car-list">
-            <li>
+            <li data-car-model="Toyota RAV4" data-monthly-pay="440" data-year="2021">
               <div class="featured-car-card">
                 <figure class="card-banner">
                   <img src="./assets/images/car-1.jpg" alt="Toyota RAV4 2021" loading="lazy" width="440" height="300"
@@ -169,7 +169,7 @@
                 </div>
               </div>
             </li>
-            <li>
+            <li data-car-model="BMW 3 Series" data-monthly-pay="350" data-year="2019">
               <div class="featured-car-card">
                 <figure class="card-banner">
                   <img src="./assets/images/car-2.jpg" alt="BMW 3 Series 2019" loading="lazy" width="440" height="300"
@@ -212,7 +212,7 @@
                 </div>
               </div>
             </li>
-            <li>
+            <li data-car-model="Volkswagen T-Cross" data-monthly-pay="400" data-year="2020">
               <div class="featured-car-card">
                 <figure class="card-banner">
                   <img src="./assets/images/car-3.jpg" alt="Volkswagen T-Cross 2020" loading="lazy" width="440"
@@ -257,7 +257,7 @@
                 </div>
               </div>
             </li>
-            <li>
+            <li data-car-model="Cadillac Escalade" data-monthly-pay="620" data-year="2020">
               <div class="featured-car-card">
                 <figure class="card-banner">
                   <img src="./assets/images/car-4.jpg" alt="Cadillac Escalade 2020" loading="lazy" width="440"
@@ -300,7 +300,7 @@
                 </div>
               </div>
             </li>
-            <li>
+            <li data-car-model="BMW 4 Series GTI" data-monthly-pay="530" data-year="2021">
               <div class="featured-car-card">
                 <figure class="card-banner">
                   <img src="./assets/images/car-5.jpg" alt="BMW 4 Series GTI 2021" loading="lazy" width="440"
@@ -344,7 +344,7 @@
                 </div>
               </div>
             </li>
-            <li>
+            <li data-car-model="BMW 4 Series" data-monthly-pay="490" data-year="2019">
               <div class="featured-car-card">
                 <figure class="card-banner">
                   <img src="./assets/images/car-6.jpg" alt="BMW 4 Series 2019" loading="lazy" width="440" height="300"
@@ -753,6 +753,9 @@
       </div>
     </div>
   </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" data-toast-container></div>
 
   <script src="./assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
